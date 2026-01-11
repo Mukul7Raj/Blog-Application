@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { loginRequest, loginSuccess, loginFailure } from '../slices/authSlice';
 import { PayloadAction } from '@reduxjs/toolkit';
 
-function* handleLogin(action: PayloadAction<{ username: string; password: string }>) {
+function* handleLogin(action: PayloadAction<{ username: string; password: string }>): Generator<any, void, any> {
     try {
         const response: Response = yield call(fetch, 'https://dummyjson.com/auth/login', {
             method: 'POST',

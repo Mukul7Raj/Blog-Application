@@ -9,7 +9,7 @@ import {
 } from '../slices/postsSlice';
 import { PayloadAction } from '@reduxjs/toolkit';
 
-function* handleFetchPosts(action: PayloadAction<{ limit?: number; skip?: number } | undefined>) {
+function* handleFetchPosts(action: PayloadAction<{ limit?: number; skip?: number } | undefined>): Generator<any, void, any> {
     try {
         const { limit = 10, skip = 0 } = action.payload || {};
         const response = yield call(fetch, `https://dummyjson.com/posts?limit=${limit}&skip=${skip}`);
@@ -44,7 +44,7 @@ function* handleFetchPosts(action: PayloadAction<{ limit?: number; skip?: number
     }
 }
 
-function* handleSearchPosts(action: PayloadAction<string>) {
+function* handleSearchPosts(action: PayloadAction<string>): Generator<any, void, any> {
     try {
         const query = action.payload;
         const response = yield call(fetch, `https://dummyjson.com/posts/search?q=${query}`);
@@ -58,7 +58,7 @@ function* handleSearchPosts(action: PayloadAction<string>) {
     }
 }
 
-function* handleFetchPostDetail(action: PayloadAction<number>) {
+function* handleFetchPostDetail(action: PayloadAction<number>): Generator<any, void, any> {
     try {
         const response = yield call(fetch, `https://dummyjson.com/posts/${action.payload}`);
 
@@ -73,7 +73,7 @@ function* handleFetchPostDetail(action: PayloadAction<number>) {
     }
 }
 
-function* handleCreatePost(action: PayloadAction<{ title: string; body: string; userId: number }>) {
+function* handleCreatePost(action: PayloadAction<{ title: string; body: string; userId: number }>): Generator<any, void, any> {
     try {
         const response = yield call(fetch, 'https://dummyjson.com/posts/add', {
             method: 'POST',
@@ -90,7 +90,7 @@ function* handleCreatePost(action: PayloadAction<{ title: string; body: string; 
     }
 }
 
-function* handleUpdatePost(action: PayloadAction<{ id: number; title: string; body: string }>) {
+function* handleUpdatePost(action: PayloadAction<{ id: number; title: string; body: string }>): Generator<any, void, any> {
     try {
         const response = yield call(fetch, `https://dummyjson.com/posts/${action.payload.id}`, {
             method: 'PUT',
@@ -108,7 +108,7 @@ function* handleUpdatePost(action: PayloadAction<{ id: number; title: string; bo
     }
 }
 
-function* handleDeletePost(action: PayloadAction<number>) {
+function* handleDeletePost(action: PayloadAction<number>): Generator<any, void, any> {
     try {
         const response = yield call(fetch, `https://dummyjson.com/posts/${action.payload}`, {
             method: 'DELETE',

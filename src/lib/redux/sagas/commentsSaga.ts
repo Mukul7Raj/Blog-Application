@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { fetchCommentsRequest, fetchCommentsSuccess, fetchCommentsFailure } from '../slices/commentsSlice';
 import { PayloadAction } from '@reduxjs/toolkit';
 
-function* handleFetchComments(action: PayloadAction<number>) {
+function* handleFetchComments(action: PayloadAction<number>): Generator<any, void, any> {
     try {
         const response = yield call(fetch, `https://dummyjson.com/posts/${action.payload}/comments`);
 
