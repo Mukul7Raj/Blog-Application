@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-sora);
+  --font-mono: var(--font-geist-mono);
+
+  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+  --animate-gradient: gradient 8s linear infinite;
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --accent-blue: #3b82f6;
+  /* Blue-500 */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    /* slightly tighten */
+    font-weight: 500;
+    /* reduce from default bold */
+  }
+}
